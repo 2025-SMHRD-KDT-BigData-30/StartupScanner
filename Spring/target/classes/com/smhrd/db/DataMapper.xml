@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smhrd.db.DataMapper">
+
+
+	<select id="load상가Data" resultType="com.smhrd.model.CommercialSalesDTO" parameterType="String">
+	    SELECT 
+	        *
+	    FROM 
+	        TB_COMMERCIAL_SALES
+	    WHERE 
+	        구 = #{param1}
+	        AND 업종이름 = #{param2}
+	</select>
+
+	<select id="load배달DataM" resultType="com.smhrd.model.DeliverySalesDTO" parameterType="String">
+	    SELECT 
+	        *
+	    FROM 
+	        TB_DELIVERY_SALES
+	    WHERE 
+	        구 = #{param1}
+	        AND 업종이름 = #{param2}
+	        AND 성별 = "남자"
+	</select>
+	
+	<select id="load배달DataF" resultType="com.smhrd.model.DeliverySalesDTO" parameterType="String">
+	    SELECT 
+	        *
+	    FROM 
+	        TB_DELIVERY_SALES
+	    WHERE 
+	        구 = #{param1}
+	        AND 업종이름 = #{param2}
+	        AND 성별 = "여자"
+	</select>
+
+	<select id="load인구1Data" resultType="com.smhrd.model.DongStopDTO" parameterType="String">
+	    SELECT 
+	        *
+	    FROM 
+	        TB_DONG_STOP
+	    WHERE 
+	        주소 = #{param1}
+	</select>
+    
+    <select id="load인구2Data" resultType="java.util.List" parameterType="String">
+        SELECT 
+            *
+        FROM 
+            TB_FLOATING_POPULATION
+        WHERE 
+            행정동명 = #{param1}
+            AND 컬럼2 = #{param2}
+    </select>
+
+</mapper>
